@@ -7,11 +7,12 @@ module.exports = function(app){
       if(err){
         res.send(err);
       }
+      console.log('inside nerd route');
       res.json(nerds);
     });
   });
 
   app.get('*', function(req,res){
-    res.sendFile('./public/views/index.html');
+    res.sendfile('./public/views/index.html');
   });
 };
