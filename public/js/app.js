@@ -1,21 +1,11 @@
-var app = angular.module('ComplexMain',[
-  'PrblmCtrl',
-  'PrblmSer',
-])
-.config(function($routeProvider, $httpProvider){
+problemApp = angular.module('problemApp',['ngRoute'])
+.config(function($routeProvider){
   $routeProvider
   .when('/', {
-    templateUrl: 'public/views/index.html',
+    templateUrl: '/public/views/index.html',
     controller: 'ProblemController'
   })
 });
 
-app.factory('ProblemService', '$http', function($http){
-  return {
-    fetchProblems: function () {
-      return $http.get('/problems')
-    }
-  }
-});
 
 

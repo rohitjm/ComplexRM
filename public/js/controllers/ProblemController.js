@@ -1,18 +1,25 @@
-angular.module('PrblmCtrl',[])
-  .controller('ProblemController', function($scope, $http, ProblemService){
+problemApp.controller('ProblemController', function($rootScope, $scope, ProblemFactory){
       
-      $scope.greet = "hello there, lets do this thing!";
-      $scope.err = '';
+  $scope.problems = {};
+  $scope.err = '';
 
-      $scope.getProblems = function(){
-        ProblemService.success(function(data){
-          console.log(data);
-          $scope.problems = data;
-        }).error(function(data,status){
-          console.log("There was an error.");
-          $scope.err = "Something went wrong";
-        })
-      };
+    console.log('inside controller!');
+    ProblemFactory.getProblems().then(function(data){
+      $scope.problems = data.data;
+    });    
+  
+});
+
+
+// $scope.getProblems = function(){
+//   ProblemService.success(function(data){
+//     console.log(data);
+//     $scope.problems = data;
+//   }).error(function(data,status){
+//     console.log("There was an error.");
+//     $scope.err = "Something went wrong";
+//   })
+
 
       // $scope.addProblem = function(){
       //   var newProblem = new ProblemService({
@@ -24,5 +31,3 @@ angular.module('PrblmCtrl',[])
       // newProblem.$save(function(response){
       //   $location.path('/problems');
       //})
-
-});
