@@ -2,12 +2,19 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-
+var mongoose = require('mongoose');
+var Problem = require('./app/models/problem');
 var app = express();
 var db = require('./config/db');
 var port = process.env.PORT || 8080;
 
-//mongoose.connect(db.url);
+//connect to MongoDB using url from config/db
+mongoose.connect(db.url,function(err) {
+  if (err) throw err;});
+
+mongoose.connection.on("open", function(){
+  console.log("mongodb is connected")}  //this gets printed
+);
 
 app.use(bodyParser.json());
 
