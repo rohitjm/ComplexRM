@@ -39,24 +39,24 @@
         </div>
         <p></p>
  -->
+
+   <select class = 'dropdown' ng-model="myProblem" ng-options="problem.name group by problem.id for problem in problems">
+   <option value="">Select Problem</option>
+   </select>
+<br/>
+      <button type = 'submit' ng-click = 'getProblem()'>Submit</button>
+
         <div class = 'entry'>
-          <textarea rows="4" cols="50" ng-model = 'userEntry'></textarea>
-          <button type = 'submit' ng-click = 'doIt()'>Submit</button>
+          <textarea rows="4" cols="50" ng-model = 'mySolution'></textarea>
+          <button type = 'submit' ng-click = 'addSolution(mySolution)'>Submit</button>        
         </div> 
 
 <!--    <div ng-repeat = 'problem in problems'>
           <h3>{{ problem.name }}</h3>
         </div> -->
 
-        <label>Pick a Toy Problem:
-          <select ng-model="myProblem" ng-options="problem.name group by problem.id for problem in problems">
-          <option value="">Select Account</option>
-          </select>
-        </label><br/>
-
-
-        <h2>{{err}}</h2>
-
+        <h2>{{myProblem.name}}</h2>
+        <h3>{{code.prompt}}</h3>
       </div>
   </body>
 </html>
